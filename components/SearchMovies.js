@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import MovieCard from './MovieCard'
+import style from './SearchMovies.module.css'
 
 
 
@@ -17,7 +18,7 @@ const SearchMovies = () => {
             params: { info: 'mini_info', limit: '4', page: '1', titleType: 'movie' },
             headers: {
                 'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
-                'X-RapidAPI-Key': '8285f13503mshfc7480185ec1d56p1bee4ajsn936e2203ec27'
+                'X-RapidAPI-Key': process.env.API_KEY
             }
         };
 
@@ -42,7 +43,7 @@ const SearchMovies = () => {
         setMovie(searchTerm)
     }
 
-    let x = results.results?.map(function (i) {
+    let movieSearchResults = results.results?.map(function (i) {
             return (
             <div key={i.id}>
                   <MovieCard 
@@ -65,10 +66,10 @@ const SearchMovies = () => {
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}
                 />
-                <button type='submit' onClick={onSubmit}>Submit</button>
+                <button type='submit' onClick={onSubmit}>Search</button>
             </form>
-            <div>
-                {x}
+            <div className={style.cardGrid}>
+                {movieSearchResults}
 
             </div>
 
