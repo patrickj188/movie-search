@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Link from 'next/link'
 import style from "./Layout.module.css"
-import movies from "../pages/movies"
+
 
 export default function Layout({ children }) {
     const [isOpen, setIsOpen] = useState(false)
