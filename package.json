@@ -8,8 +8,26 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "plugins": [
+    "postcss-flexbugs-fixes",
+    [
+      "postcss-preset-env",
+      {
+        "autoprefixer": {
+          "flexbox": "no-2009"
+        },
+        "stage": 3,
+        "features": {
+          "custom-properties": false
+        }
+      }
+    ]
+  ],
   "dependencies": {
+    "axios": "^0.27.2",
     "next": "12.1.5",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.5.0",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },

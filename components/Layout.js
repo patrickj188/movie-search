@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Link from 'next/link'
-import style from "../styles/Layout.module.css"
+import style from "./Layout.module.css"
 import movies from "../pages/movies"
 
 export default function Layout({ children }) {
@@ -18,13 +18,13 @@ export default function Layout({ children }) {
                     <Link href='/'>
                         <a className={style.navlogso}>Movie Site</a>
                     </Link>
-                    <ul className={isOpen === false ? style.navmesnu : `${style.navmesnu} ${style.active}`}>
-                        <li className={style.nsavitem}>
+                    <ul className={isOpen === false ? style.navmenu : `${style.navmenu} ${style.active}`}>
+                        <li className={style.navitem}>
                             <Link href={'/'}>
                                 <a className={style.navlink}>Home</a>
                             </Link>
                         </li>
-                        <li className={style.nsavitem}>
+                        <li className={style.navitem}>
 
                             <Link href='/movies'>
 
@@ -32,7 +32,7 @@ export default function Layout({ children }) {
                         </Link>
 
                     </li>
-                    <li className={style.nsavitem}>
+                    <li className={style.navitem}>
 
                         <Link href='/random'>
 
@@ -41,7 +41,7 @@ export default function Layout({ children }) {
 
                     </li>
                 </ul>
-                <button className={isOpen === false ? style.hsamburger : `${style.hsamburger} ${style.active}`}
+                <button className={isOpen === false ? style.hamburger : `${style.hamburger} ${style.active}`}
                     onClick={openMenu}>
                     <span className={style.bar}></span>
                     <span className={style.bar}></span>
