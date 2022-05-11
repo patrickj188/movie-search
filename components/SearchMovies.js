@@ -14,16 +14,14 @@ const SearchMovies = () => {
 
         const options = {
             method: 'GET',
-            url: `https://moviesdatabase.p.rapidapi.com/titles/search/title/${movie}`,
-            params: { info: 'mini_info', limit: '4', page: '1', titleType: 'movie' },
+            url: `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_API_KEY}/${movie}`,
             headers: {
-                'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
-                'X-RapidAPI-Key': process.env.API_KEY
+                'Content-Type': 'application/json'
             }
         };
 
         const search = async () => {
-            await axios.request(options).then(function (response) {
+            await axios.request(options).then((response) => {
                 console.log(response.data);
                 setResults(response.data)
             }).catch(function (error) {
@@ -36,24 +34,23 @@ const SearchMovies = () => {
             search()
         }
 
-    }, [movie])
+    })
 
-    const onSubmit = (e) =>{
+    const onSubmit = (e) => {
         e.preventDefault();
         setMovie(searchTerm)
     }
 
     let movieSearchResults = results.results?.map(function (i) {
-            return (
-            <div key={i.id}>
-                  <MovieCard 
-                  title={i.titleText.text} 
-                  img={i.primaryImage.url}  
-                  actors={i.primaryImage.caption.plainText} 
-                  />
-                </div>
-            )
-        })
+        return (<div key={i.id}>
+            <MovieCard
+                title={i.title}
+                img={i.image}
+                year={i.description}
+            />
+        </div>)
+
+    })
 
 
     return (
