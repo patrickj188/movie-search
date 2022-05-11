@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const data = req.body;
 
-        const client = await MongoClient.connect('mongodb+srv://Patrick:gallifrey18@cluster0.ty1tq.mongodb.net/movies?retryWrites=true&w=majority')
+        const client = await MongoClient.connect(`mongodb+srv://Patrick:${MONGODB_KEY}@cluster0.ty1tq.mongodb.net/movies?retryWrites=true&w=majority`)
         const db = client.db();
 
         const moviesCollection = db.collection('users')
