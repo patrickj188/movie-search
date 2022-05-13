@@ -37,14 +37,6 @@ export default function Layout({ children }) {
 
                         </li>
                         <li className={style.navitem}>
-
-                            <Link href='/new-users'>
-
-                                <a className={style.navlink}>New User</a>
-                            </Link>
-
-                        </li>
-                        <li className={style.navitem}>
                                 <LoginPage />
 
                         </li>
