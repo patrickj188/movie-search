@@ -4,6 +4,8 @@ import style from "./Layout.module.css"
 import LoginPage from "./ui/loginPage"
 
 
+
+
 export default function Layout({ children }) {
     const [isOpen, setIsOpen] = useState(false)
 
@@ -43,7 +45,7 @@ export default function Layout({ children }) {
 
                         </li>
                         <li className={style.navitem}>
-                            <LoginPage />
+                                <LoginPage />
 
                         </li>
 

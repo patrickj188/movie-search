@@ -1,7 +1,10 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google'
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
+import clientPromise from "../lib/mongodb"
 
 export default NextAuth({
+  adapter: MongoDBAdapter(clientPromise),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
@@ -15,14 +18,22 @@ export default NextAuth({
   },
   secret: "secert token",
   callbacks: {
-    async jwt(token, account) {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log(user, account, profile, email, credentials)
+      return true
+    },
+    async session({ session, token, user }) {
+      session.id = user.id;
+      return Promise.resolve(session)
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
       if (account?.accessToken) {
         token.accessToken = account.accessToken;
       }
       return token;
     },
     redirect: async (url, _baseUrl) => {
-      if (url === '/profile') {
+      if (url === '/profiles') {
         return Promise.resolve('/');
       }
       return Promise.resolve('/');

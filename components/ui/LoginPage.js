@@ -4,8 +4,9 @@ import style from '../Layout.module.css'
 import { UserCircle } from 'tabler-icons-react';
 
 
+
 const LoginPage = () => {
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     if (session) {
         return (
             <div className={style.login}>
