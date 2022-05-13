@@ -55,7 +55,7 @@ function Profile (props){
 }
 
 export async function getStaticProps() {
-    // const { data: session, status } = useSession()
+
     const client = await MongoClient.connect(process.env.MONGODB_URI)
     const db = client.db();
   
@@ -71,8 +71,7 @@ export async function getStaticProps() {
           title: movie.title,
           year: movie.year,
           img: movie.img,
-          crew: movie.crew,
-          imdbRating: movie.imdbRating,
+          id: movie._id.toString()
   
         }))
       },
