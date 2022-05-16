@@ -8,18 +8,20 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SaveButton from './SaveButton';
+import { useSession } from "next-auth/react"
 
 
 export default function MovieCard({ title, img, year, id, rank, crew, imdbRating, }) {
   const theme = useTheme();
+  const { data: session, status } = useSession()
 
   async function addMovieToPile(movieData) {
     const response = await fetch('/api/addToPile', {
-        method: 'POST',
-        body: JSON.stringify(movieData),
-        headers: {
-            'content-Type': 'application/json'
-        }
+      method: 'POST',
+      body: JSON.stringify(movieData),
+      headers: {
+        'content-Type': 'application/json'
+      }
     });
 
     const data = await response.json();
@@ -27,7 +29,21 @@ export default function MovieCard({ title, img, year, id, rank, crew, imdbRating
 
     // router.push('/')
 
-}
+  }
+
+  // if (status === "authenticated") {
+  //   return <SaveButton size="large"
+  //     addToPile={addMovieToPile}
+  //     year={year}
+  //     title={title}
+  //     img={img}
+  //     rank={rank}
+  //     crew={crew}
+  //     imdbRating={imdbRating}
+  //   >Add to Pile</SaveButton>
+  // } else {
+  //   return ''
+  // }
 
 
   return (
@@ -45,23 +61,17 @@ export default function MovieCard({ title, img, year, id, rank, crew, imdbRating
           </Typography>
         </CardContent>
         <Box sx={{ alignItems: 'center' }} mt={3} position="relative" >
-          {/* <BasicModal
+          {status === "authenticated" ? <SaveButton size="large"
+            addToPile={addMovieToPile}
             year={year}
             title={title}
             img={img}
             rank={rank}
             crew={crew}
             imdbRating={imdbRating}
-          /> */}
-          <SaveButton size="large" 
-          addToPile={addMovieToPile}
-          year={year}
-          title={title}
-          img={img}
-          rank={rank}
-          crew={crew}
-          imdbRating={imdbRating}
           >Add to Pile</SaveButton>
+            : ""
+          }
         </Box>
       </Box>
       <CardMedia

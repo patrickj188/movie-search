@@ -5,27 +5,31 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { useRouter } from 'next/router';
 
 
 
-export default function SaveCard({ title, img, year, id, rank, crew, imdbRating, }) {
+
+export default function SaveCard({ title, img, year, id }) {
   const theme = useTheme();
+  const router = useRouter()
 
-//   async function addMovieToPile(movieData) {
-//     const response = await fetch('/api/addToPile', {
-//         method: 'POST',
-//         body: JSON.stringify(movieData),
-//         headers: {
-//             'content-Type': 'application/json'
-//         }
-//     });
+  async function deleteSavedMovie(id) {
+    const response = await fetch(`/api/deleteMovie`, {
+        method: 'DELETE',
+        body: JSON.stringify(id),
+        headers: {
+          'Content-Type': 'application/json'
+      }
+    })
+    // console.log(id)
+    const data = await response.json()
+    // console.log(data)
 
-//     const data = await response.json();
-//     console.log(data)
+    router.push('/profile')
 
-//     // router.push('/')
+  };
 
-// }
 
 
   return (
@@ -44,6 +48,7 @@ export default function SaveCard({ title, img, year, id, rank, crew, imdbRating,
         </CardContent>
         <Box sx={{ alignItems: 'center' }} mt={3} position="relative" >
         </Box>
+        <button onClick={() => deleteSavedMovie(id)} >Delete</button>
       </Box>
       <CardMedia
         component="img"

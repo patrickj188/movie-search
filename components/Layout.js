@@ -32,7 +32,7 @@ export default function Layout({ children }) {
 
                             <Link href='/movies'>
 
-                                <a className={style.navlink}>Movies</a>
+                                <a className={style.navlink}>Search</a>
                             </Link>
 
                         </li>

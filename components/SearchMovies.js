@@ -34,7 +34,7 @@ const SearchMovies = () => {
             search()
         }
 
-    })
+    },[movie])
 
     const onSubmit = (e) => {
         e.preventDefault();
