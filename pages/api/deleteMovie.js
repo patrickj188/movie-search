@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId  } from "mongodb";
 
 
 
@@ -10,9 +10,9 @@ export default async function handler(req, res) {
         const db = client.db();
 
         const yourCollection = db.collection("SavedUserMovies");
-        const result = await yourCollection.findOneAndDelete({ _id: req.body.id });
+        const result = await yourCollection.findOneAndDelete({ _id: ObjectId(data) });
 
-        console.log(req.params);
+        console.log(data);
         client.close();
 
 

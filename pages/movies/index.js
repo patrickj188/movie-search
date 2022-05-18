@@ -1,11 +1,18 @@
-import SearchMovies from "../../components/SearchMovies"
+import SearchMovies from "../../components/search/SearchMovies"
+import SearchByGenres from "../../components/search/SearchByGenres"
 
-export default function movies({movies}){
+export default function movies({ movies }) {
     return (
         <div>
             <h1>Movie Page</h1>
             <div>
-            <SearchMovies />
+                <div>
+                    <SearchMovies />
+                    <di>
+                        <SearchByGenres />
+                    </di>
+                </div>
+
             </div>
         </div>
     )

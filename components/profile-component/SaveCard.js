@@ -22,7 +22,7 @@ export default function SaveCard({ title, img, year, id }) {
           'Content-Type': 'application/json'
       }
     })
-    // console.log(id)
+    console.log(id)
     const data = await response.json()
     // console.log(data)
 

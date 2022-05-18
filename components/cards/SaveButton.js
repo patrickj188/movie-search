@@ -17,7 +17,7 @@ const SaveButton = (props) => {
         props.addToPile(movieData);
     }
 
-    return <Button size="large" onClick={submitHandler}>Add to Pile</Button>
+    return <Button size="large" variant="contained" onClick={submitHandler}>Save</Button>
 }
 
 export default SaveButton;

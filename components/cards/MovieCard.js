@@ -1,5 +1,4 @@
-import style from './MovieCard.module.css'
-import BasicModal from './BasicModal';
+import styles from './MovieCard.module.css'
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -9,6 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import SaveButton from './SaveButton';
 import { useSession } from "next-auth/react"
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 
 export default function MovieCard({ title, img, year, id, rank, crew, imdbRating, }) {
@@ -31,36 +31,16 @@ export default function MovieCard({ title, img, year, id, rank, crew, imdbRating
 
   }
 
-  // if (status === "authenticated") {
-  //   return <SaveButton size="large"
-  //     addToPile={addMovieToPile}
-  //     year={year}
-  //     title={title}
-  //     img={img}
-  //     rank={rank}
-  //     crew={crew}
-  //     imdbRating={imdbRating}
-  //   >Add to Pile</SaveButton>
-  // } else {
-  //   return ''
-  // }
-
-
   return (
-    <Card sx={{ display: 'flex' }}>
-      <Box sx={{
-        width: 200,
-        height: 150,
-      }}>
-        <CardContent>
-          <Typography component="div" variant="subtitle1">
-            {title}
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            {year}
-          </Typography>
-        </CardContent>
-        <Box sx={{ alignItems: 'center' }} mt={3} position="relative" >
+    <Card className={styles.movieCard} style={{ backgroundImage: `url(${img})` }}>
+      <div className={styles.overlayInfo}>
+        <Typography variant="h4">
+          {title}
+        </Typography>
+        <Typography  variant="h6">
+          {year}
+        </Typography>
+        <Box className={styles.userControl}>
           {status === "authenticated" ? <SaveButton size="large"
             addToPile={addMovieToPile}
             year={year}
@@ -69,17 +49,12 @@ export default function MovieCard({ title, img, year, id, rank, crew, imdbRating
             rank={rank}
             crew={crew}
             imdbRating={imdbRating}
-          >Add to Pile</SaveButton>
+          />
             : ""
           }
         </Box>
-      </Box>
-      <CardMedia
-        component="img"
-        sx={{ width: 151 }}
-        image={img}
-        alt="Live from space album cover"
-      />
+      </div>
+
     </Card>
   );
 }

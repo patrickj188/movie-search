@@ -1,5 +1,7 @@
+import { style } from "@mui/system";
 import React from "react";
 import SaveCard from "./SaveCard";
+import styles from './UserWatchPile.module.css'
 
 
 const ProfileTabs = ({ userMovies }) => {
@@ -20,7 +22,7 @@ const ProfileTabs = ({ userMovies }) => {
 
 
     return (
-        <div>
+        <div className={styles.cardGrid}>
             {rendersMovies}
         </div>
     )

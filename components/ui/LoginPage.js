@@ -1,27 +1,57 @@
+import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link'
 import style from '../Layout.module.css'
 import { UserCircle } from 'tabler-icons-react';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 
 
 const LoginPage = () => {
     const { data: session, status } = useSession();
+    const [anchorEl, setAnchorEl] =useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
     if (session) {
         return (
             <div className={style.login}>
                 <div>
-                    <Link href='/profile' >
-                        <a className=""> <UserCircle
-                            size={30}
-                            strokeWidth={1}
-                            color={'black'}
-                        /></a>
-                    </Link>
+                        <Button
+                            id="basic-button"
+                            aria-controls={open ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
+                        >
+                            <a className=""> <UserCircle
+                                size={60}
+                                strokeWidth={1}
+                                color={'black'}
+                            /></a>
+                        </Button>
 
-                </div>
-                <div>
-                    <button onClick={() => signOut()}>Sign Out</button>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                        >
+                            <MenuItem><Link href='/profile' > Profile </Link></MenuItem>
+                            <MenuItem >My account</MenuItem>
+                            <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+                        </Menu>
+
                 </div>
             </div>
         );

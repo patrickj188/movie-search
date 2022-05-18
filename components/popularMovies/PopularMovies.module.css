@@ -1,5 +1,30 @@
-.cardGrid {
+.section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow-x: auto;
+    margin: 50px 0;
+
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+
+}
+
+.posters {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200vw;
+}
+
+.headingSticky {
+    position: relative;
 }

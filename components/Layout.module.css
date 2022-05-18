@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem;
 }
 
 .hamburger {
@@ -30,18 +30,17 @@
 }
 
 .navitem {
-    margin-left: 5rem;
+    margin-left: 2rem;
 }
 
 .navlink{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     color: #475569;
-    text-transform: uppercase;
 }
 
 .navlink:hover{
-    color: #482ff7;
+    color: #fc6a21;
 }
 
 .navlogo {
@@ -73,6 +72,7 @@
 
     .navmenu.active {
         left: 0;
+        z-index: 800;
     }
 
     .navitem {

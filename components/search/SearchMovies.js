@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import MovieCard from "./cards/MovieCard"
+import MovieCard from "../cards/MovieCard"
 import style from './SearchMovies.module.css'
+import { InputAdornment } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import SearchIcon from '@mui/icons-material/Search';
+import { IconButton } from '@mui/material'
+import CancelIcon from '@mui/icons-material/Cancel';
+import Button from '@mui/material/Button';
+import TheatersIcon from '@mui/icons-material/Theaters';
+
 
 
 
@@ -34,12 +42,21 @@ const SearchMovies = () => {
             search()
         }
 
-    },[movie])
+    }, [movie])
 
     const onSubmit = (e) => {
         e.preventDefault();
         setMovie(searchTerm)
     }
+    const clearDate = (e) => {
+        e.preventDefault();
+        setSearchTerm('')
+    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          console.log('do validate')
+        }
+      }
 
     let movieSearchResults = results.results?.map(function (i) {
         return (<div key={i.id}>
@@ -54,8 +71,33 @@ const SearchMovies = () => {
 
 
     return (
-        <div>
-            <form >
+        <div >
+            <TextField
+                placeholder="Search"
+                type="text"
+                variant="outlined"
+                size="small"
+                onChange={e => setSearchTerm(e.target.value)}
+                value={searchTerm}
+                onKeyDown={handleKeyDown}
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start" >
+                            <TheatersIcon />
+                        </InputAdornment>
+                    ),
+                    endAdornment: searchTerm && (
+                        <IconButton
+                            aria-label="toggle password visibility"
+                            type="submit"
+                            onClick={clearDate}
+                        >
+                            <CancelIcon /></IconButton>
+                    )
+                }}
+            />
+            <button type='submit' onClick={onSubmit}>Search</button>
+            {/* <form >
                 <label>Enter Movie</label>
                 <input
                     className="input"
@@ -64,7 +106,7 @@ const SearchMovies = () => {
                     onChange={e => setSearchTerm(e.target.value)}
                 />
                 <button type='submit' onClick={onSubmit}>Search</button>
-            </form>
+            </form> */}
             <div className={style.cardGrid}>
                 {movieSearchResults}
 
