@@ -3,3 +3,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.container {
+    height: 100vh;
+    background-color: #F1EEE9;
+}

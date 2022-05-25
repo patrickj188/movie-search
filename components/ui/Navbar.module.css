@@ -1,5 +1,12 @@
 .header{
-    border-bottom: 1px solid #E2E8F0;
+    /* border-bottom: 1px solid #E2E8F0; */
+    background-color: #15133C;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 400;
+    margin-bottom: 80px;
+    
 }
 
 .navbar {
@@ -20,7 +27,7 @@
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: #222222;
+    background-color: #F1EEE9;
 }
 
 .navmenu {
@@ -36,23 +43,24 @@
 .navlink{
     font-size: 1.5rem;
     font-weight: 400;
-    color: #475569;
+    color: #F1EEE9;
 }
 
 .navlink:hover{
-    color: #fc6a21;
+    color: #EC994B;
 }
 
 .navlogo {
     font-size: 1.8rem;
     font-weight: 500;
-    color: black;
+    color: #F1EEE9;
     text-align: center;
 
 }
 
 .login{
     display: flex;
+
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,9 @@
+.footerContainer {
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background-color: #15133C;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #F1EEE9;
+}

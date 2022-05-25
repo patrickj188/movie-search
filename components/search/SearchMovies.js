@@ -9,6 +9,7 @@ import { IconButton } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
 import TheatersIcon from '@mui/icons-material/Theaters';
+import SearchByGenres from './SearchByGenres';
 
 
 
@@ -17,12 +18,13 @@ const SearchMovies = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const [movie, setMovie] = useState('');
     const [results, setResults] = useState([])
+    const [movieGenre, setmovieGenre] = useState([]);
 
     useEffect(() => {
 
         const options = {
             method: 'GET',
-            url: `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_API_KEY}/${movie}`,
+            url: `https://imdb-api.com/API/AdvancedSearch/${process.env.NEXT_PUBLIC_API_KEY}?${movie}`,
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -46,17 +48,17 @@ const SearchMovies = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        setMovie(searchTerm)
+        setMovie(`title=${searchTerm}`)
     }
     const clearDate = (e) => {
         e.preventDefault();
         setSearchTerm('')
     }
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-          console.log('do validate')
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            onSubmit(e)
         }
-      }
+    }
 
     let movieSearchResults = results.results?.map(function (i) {
         return (<div key={i.id}>
@@ -71,7 +73,7 @@ const SearchMovies = () => {
 
 
     return (
-        <div >
+        <div className={style.searchContainer}>
             <TextField
                 placeholder="Search"
                 type="text"
@@ -79,34 +81,45 @@ const SearchMovies = () => {
                 size="small"
                 onChange={e => setSearchTerm(e.target.value)}
                 value={searchTerm}
-                onKeyDown={handleKeyDown}
+                onKeyDown={handleKeyPress}
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start" >
-                            <TheatersIcon />
+                            <TheatersIcon
+                               style={{
+                                color: '#73777B'
+                            }}
+                             />
                         </InputAdornment>
                     ),
                     endAdornment: searchTerm && (
+
                         <IconButton
                             aria-label="toggle password visibility"
                             type="submit"
                             onClick={clearDate}
+                            style={{
+                                color: '#73777B'
+                            }}
                         >
                             <CancelIcon /></IconButton>
                     )
+
                 }}
             />
-            <button type='submit' onClick={onSubmit}>Search</button>
-            {/* <form >
-                <label>Enter Movie</label>
-                <input
-                    className="input"
-                    type='text'
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                />
-                <button type='submit' onClick={onSubmit}>Search</button>
-            </form> */}
+            <Button 
+            type="submit" 
+            onClick={onSubmit} 
+            variant="contained" 
+            style={{
+                backgroundColor: "#EC994B",
+                color: '#15133C'
+            }}
+            >
+                    Search
+            </Button>
+            <SearchByGenres setmovieGenre={setmovieGenre}/>
+            
             <div className={style.cardGrid}>
                 {movieSearchResults}
 

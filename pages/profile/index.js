@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import UserWatchPile from '../../components/profile-component/UserWatchPile'
+import WatchedMovies from "../../components/profile-component/WatchedMovies";
 
 function Profile (props){
     const [value, setValue] = useState(0);
@@ -17,7 +18,7 @@ function Profile (props){
 
 
             case 1:
-                return `Tab number ${value}`;
+                return <WatchedMovies />;
 
 
 
@@ -33,15 +34,22 @@ function Profile (props){
 
     }
     return (
-        <div>
+        <div >
         <Paper square>
             <Tabs
                 value={value}
-                textColor="primary"
-                indicatorColor="primary"
                 onChange={(event, newValue) => {
                     setValue(newValue);
                 }}
+                style={{
+                    marginTop: "110px",
+                    // backgroundColor: "#F1EEE9",
+                }}
+                TabIndicatorProps={{
+                    style: {
+                      backgroundColor: "#EC994B",
+                     }
+                    }}
             >
                 <Tab label="My Watch Pile">
                 </Tab>

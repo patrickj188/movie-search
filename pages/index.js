@@ -14,8 +14,6 @@ export default function Home() {
 
       <main className={styles.main}>
           <PopularMovies />
-    
-
       </main>
     </div>
       

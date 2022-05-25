@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Link from 'next/link'
-import style from "./Layout.module.css"
-import LoginPage from "./ui/loginPage"
+import style from "./Navbar.module.css"
+import LoginPage from "./loginPage"
 
 
 

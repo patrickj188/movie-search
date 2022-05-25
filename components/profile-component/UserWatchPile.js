@@ -22,8 +22,10 @@ const ProfileTabs = ({ userMovies }) => {
 
 
     return (
-        <div className={styles.cardGrid}>
-            {rendersMovies}
+        <div className={styles.container}>
+            <div className={styles.cardGrid}>
+                {rendersMovies}
+            </div>
         </div>
     )
 }

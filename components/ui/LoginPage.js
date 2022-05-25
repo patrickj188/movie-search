@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link'
-import style from '../Layout.module.css'
+import style from '../ui/Navbar.module.css'
 import { UserCircle } from 'tabler-icons-react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -34,7 +34,7 @@ const LoginPage = () => {
                             <a className=""> <UserCircle
                                 size={60}
                                 strokeWidth={1}
-                                color={'black'}
+                                color={'#F1EEE9'}
                             /></a>
                         </Button>
 

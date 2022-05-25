@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import axios from 'axios'
 import MovieCard from "../cards/MovieCard"
+import style from './SearchMovies.module.css'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -87,7 +88,7 @@ export default function SearchByGenres() {
 
 
     let movieGenreResults = results.results?.map(function (i) {
-        return (<div key={i.id}>
+        return (<div key={i.id} >
             <MovieCard
                 title={i.title}
                 img={i.image}
@@ -119,7 +120,7 @@ export default function SearchByGenres() {
                     ))}
                 </Select>
             </FormControl>
-            <di>
+            <di className={style.cardGrid}>
                 {movieGenreResults}
             </di>
         </div>

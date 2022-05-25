@@ -1,16 +1,14 @@
 import SearchMovies from "../../components/search/SearchMovies"
-import SearchByGenres from "../../components/search/SearchByGenres"
+import styles from './index.module.css'
+
 
 export default function movies({ movies }) {
     return (
-        <div>
+        <div className={styles.main}>
             <h1>Movie Page</h1>
             <div>
                 <div>
                     <SearchMovies />
-                    <di>
-                        <SearchByGenres />
-                    </di>
                 </div>
 
             </div>

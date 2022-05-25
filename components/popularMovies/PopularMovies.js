@@ -15,10 +15,10 @@ const PopularMovies = () => {
 
     return (
         <div className={styles.container}>
+            <Typography variant="h3" component="div" gutterBottom className={styles.heading}>
+                Popular Movies
+            </Typography>
             <div className={styles.section}>
-                <Typography variant="h3" component="div" gutterBottom>
-                    Popular Movies
-                </Typography>
                 <div className={styles.posters}>
                     {popularMovies.slice(0, 10).map((movie, index) => {
                         return <MovieCard
@@ -33,10 +33,10 @@ const PopularMovies = () => {
                     })}
                 </div>
             </div>
+            <Typography variant="h3" component="div" gutterBottom className={styles.heading}>
+                Trending Movies
+            </Typography>
             <div className={styles.section}>
-                <Typography variant="h3" component="div" gutterBottom className={styles.headingSticky}>
-                    Trending Movies
-                </Typography>
                 <div className={styles.posters}>
                     {popularMovies.slice(10, 20).map((movie, index) => {
                         return <MovieCard
