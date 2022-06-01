@@ -10,6 +10,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import SearchByGenres from './SearchByGenres';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 
@@ -19,6 +21,7 @@ const SearchMovies = () => {
     const [movie, setMovie] = useState('');
     const [results, setResults] = useState([])
     const [movieGenre, setmovieGenre] = useState([]);
+    const [isLoading, setLoading] = useState()
 
     useEffect(() => {
 
@@ -34,6 +37,7 @@ const SearchMovies = () => {
             await axios.request(options).then((response) => {
                 console.log(response.data);
                 setResults(response.data)
+                setLoading(false)
             }).catch(function (error) {
                 console.error(error);
             });
@@ -49,6 +53,7 @@ const SearchMovies = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         setMovie(`title=${searchTerm}`)
+        setLoading(true)
     }
     const clearDate = (e) => {
         e.preventDefault();
@@ -57,6 +62,7 @@ const SearchMovies = () => {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             onSubmit(e)
+            setLoading(true)
         }
     }
 
@@ -66,6 +72,7 @@ const SearchMovies = () => {
                 title={i.title}
                 img={i.image}
                 year={i.description}
+                movieId={i.id}
             />
         </div>)
 
@@ -73,56 +80,63 @@ const SearchMovies = () => {
 
 
     return (
-        <div className={style.searchContainer}>
-            <TextField
-                placeholder="Search"
-                type="text"
-                variant="outlined"
-                size="small"
-                onChange={e => setSearchTerm(e.target.value)}
-                value={searchTerm}
-                onKeyDown={handleKeyPress}
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start" >
-                            <TheatersIcon
-                               style={{
-                                color: '#73777B'
-                            }}
-                             />
-                        </InputAdornment>
-                    ),
-                    endAdornment: searchTerm && (
+        <div className={style.main}>
+            <div className={style.searchContainer}>
+                <TextField
+                    placeholder="Search"
+                    type="text"
+                    variant="outlined"
+                    size="small"
+                    onChange={e => setSearchTerm(e.target.value)}
+                    value={searchTerm}
+                    onKeyDown={handleKeyPress}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start" >
+                                <TheatersIcon
+                                    style={{
+                                        color: '#73777B'
+                                    }}
+                                />
+                            </InputAdornment>
+                        ),
+                        endAdornment: searchTerm && (
 
-                        <IconButton
-                            aria-label="toggle password visibility"
-                            type="submit"
-                            onClick={clearDate}
-                            style={{
-                                color: '#73777B'
-                            }}
-                        >
-                            <CancelIcon /></IconButton>
-                    )
+                            <IconButton
+                                aria-label="toggle password visibility"
+                                type="submit"
+                                onClick={clearDate}
+                                style={{
+                                    color: '#73777B'
+                                }}
+                            >
+                                <CancelIcon /></IconButton>
+                        )
 
-                }}
-            />
-            <Button 
-            type="submit" 
-            onClick={onSubmit} 
-            variant="contained" 
-            style={{
-                backgroundColor: "#EC994B",
-                color: '#15133C'
-            }}
-            >
+                    }}
+                />
+                <Button
+                    className={style.searchButton}
+                    type="submit"
+                    onClick={onSubmit}
+                    variant="contained"
+                    style={{
+                        backgroundColor: "#EC994B",
+                        color: '#15133C',
+                    }}
+                >
                     Search
-            </Button>
-            <SearchByGenres setmovieGenre={setmovieGenre}/>
-            
-            <div className={style.cardGrid}>
-                {movieSearchResults}
+                </Button>
+                <div>
+                    <SearchByGenres setmovieGenre={setmovieGenre} />
+                </div>
 
+            </div>
+            <div className={style.cardGrid}>
+                {isLoading === true ?
+                    <Box sx={{ display: 'flex' }}>
+                        <CircularProgress style={{ color: "#EC994B" }} />
+                    </Box> : movieSearchResults}
             </div>
 
         </div>

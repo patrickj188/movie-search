@@ -100,12 +100,15 @@ export default function SearchByGenres() {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+            
+            <FormControl sx={{ width: 200 }}>
+                <InputLabel id="demo-multiple-checkbox-label">Genre</InputLabel>
                 <Select
                     labelId="demo-multiple-checkbox-label"
                     id="demo-multiple-checkbox"
                     multiple
+                    label='Genre'
+                    size='small'
                     value={movieGenre}
                     onChange={handleChange}
                     input={<OutlinedInput label="Tag" />}
@@ -120,9 +123,9 @@ export default function SearchByGenres() {
                     ))}
                 </Select>
             </FormControl>
-            <di className={style.cardGrid}>
+            <div className={style.cardGrid}>
                 {movieGenreResults}
-            </di>
+            </div>
         </div>
     );
 }

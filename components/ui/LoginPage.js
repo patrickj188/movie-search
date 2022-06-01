@@ -48,7 +48,6 @@ const LoginPage = () => {
                             }}
                         >
                             <MenuItem><Link href='/profile' > Profile </Link></MenuItem>
-                            <MenuItem >My account</MenuItem>
                             <MenuItem onClick={() => signOut()}>Logout</MenuItem>
                         </Menu>
 

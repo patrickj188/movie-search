@@ -7,4 +7,15 @@
 .searchContainer {
     height: auto;
     margin-top: 100px;
+    display: flex;
+
+}
+.searchButton{
+    height: fit-content;
+    margin: 0 2px;
+}
+
+.main {
+    height: auto;
+    margin-top: 100px;
 }

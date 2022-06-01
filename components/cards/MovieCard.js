@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react"
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 
-export default function MovieCard({ title, img, year, id, rank, crew, imdbRating, }) {
+export default function MovieCard({ title, img, year, movieId, rank, crew, imdbRating, }) {
   const theme = useTheme();
   const { data: session, status } = useSession()
 
@@ -49,6 +49,7 @@ export default function MovieCard({ title, img, year, id, rank, crew, imdbRating
             rank={rank}
             crew={crew}
             imdbRating={imdbRating}
+            movieId={movieId}
           />
             : ""
           }

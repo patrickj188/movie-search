@@ -12,6 +12,7 @@ const SaveButton = (props) => {
             title: props.title,
             img: props.img,
             year: props.year,
+            movieId: props.movieId
         };
 
         props.addToPile(movieData);

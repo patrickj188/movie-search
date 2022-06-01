@@ -29,6 +29,7 @@ const PopularMovies = () => {
                             crew={movie.crew}
                             imdbRating={movie.imDbRating}
                             key={index}
+                            movieId={movie.id}
                         />
                     })}
                 </div>
@@ -47,31 +48,11 @@ const PopularMovies = () => {
                             crew={movie.crew}
                             imdbRating={movie.imDbRating}
                             key={index}
+                            movieId={movie.id}
                         />
                     })}
                 </div>
             </div>
-            {/* <div className={styles.section}>
-                <Typography variant="h3" component="div" gutterBottom>
-                    Trending TV
-                </Typography>
-                <div className={styles.posters}>
-                    {popularTv.slice(20, 30).map((tv, index) => {
-                        return <MovieCard
-                            title={tv.title}
-                            img={tv.image}
-                            year={tv.year}
-                            rank={tv.rank}
-                            crew={tv.crew}
-                            imdbRating={tv.imDbRating}
-                            key={index}
-                        />
-                    })}
-                </div>
-            </div> */}
-            {/* <div className={styles.cardGrid}>
-                {popularMovieResults}
-            </div> */}
         </div>
     )
 }

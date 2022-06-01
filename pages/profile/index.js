@@ -79,7 +79,8 @@ export async function getStaticProps() {
           title: movie.title,
           year: movie.year,
           img: movie.img,
-          id: movie._id.toString()
+          id: movie._id.toString(),
+          movieId: movie.movieId
   
         }))
       },

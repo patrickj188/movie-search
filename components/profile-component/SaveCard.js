@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 
 
-export default function SaveCard({ title, img, year, id }) {
+export default function SaveCard({ title, img, year, id, movieId, movieInfo }) {
   const theme = useTheme();
   const router = useRouter()
 
@@ -49,10 +49,11 @@ export default function SaveCard({ title, img, year, id }) {
         <Box sx={{ alignItems: 'center' }} mt={3} position="relative" >
         </Box>
         <button onClick={() => deleteSavedMovie(id)} >Delete</button>
+        <button onClick={() => movieInfo(movieId)}>Info</button>
       </Box>
       <CardMedia
         component="img"
-        sx={{ width: 151 }}
+        sx={{ width: 150 }}
         image={img}
       />
     </Card>
