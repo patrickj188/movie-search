@@ -27,7 +27,8 @@ const SearchMovies = () => {
 
         const options = {
             method: 'GET',
-            url: `https://imdb-api.com/API/AdvancedSearch/${process.env.NEXT_PUBLIC_API_KEY}?${movie}`,
+            url: `http://www.omdbapi.com/?s=${movie}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`,
+            // url: `https://imdb-api.com/API/AdvancedSearch/${process.env.NEXT_PUBLIC_API_KEY}?${movie}`,
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -35,24 +36,22 @@ const SearchMovies = () => {
 
         const search = async () => {
             await axios.request(options).then((response) => {
-                console.log(response.data);
-                setResults(response.data)
+                console.log(movie);
+                setResults(response.data.Search)
                 setLoading(false)
+                console.log(response.data.Search);
             }).catch(function (error) {
                 console.error(error);
             });
         }
 
-
-        if (movie && !results.length) {
-            search()
-        }
+        search()
 
     }, [movie])
 
     const onSubmit = (e) => {
         e.preventDefault();
-        setMovie(`title=${searchTerm}`)
+        setMovie(searchTerm)
         setLoading(true)
     }
     const clearDate = (e) => {
@@ -66,13 +65,14 @@ const SearchMovies = () => {
         }
     }
 
-    let movieSearchResults = results.results?.map(function (i) {
-        return (<div key={i.id}>
+    let movieSearchResults = results?.map(function (i) {
+        return (<div key={i.imdbID}>
             <MovieCard
-                title={i.title}
-                img={i.image}
-                year={i.description}
-                movieId={i.id}
+                title={i.Title}
+                img={i.Poster}
+                movieId={i.imdbID}
+                year={i.Year}
+
             />
         </div>)
 
@@ -128,7 +128,7 @@ const SearchMovies = () => {
                     Search
                 </Button>
                 <div>
-                    <SearchByGenres setmovieGenre={setmovieGenre} />
+                    {/* <SearchByGenres setmovieGenre={setmovieGenre} /> */}
                 </div>
 
             </div>
