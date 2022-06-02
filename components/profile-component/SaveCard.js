@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 
 
-export default function SaveCard({ title, img, year, id, movieId, movieInfo }) {
+export default function SaveCard({ title, img, year, id, movieInfo, movieId }) {
   const theme = useTheme();
   const router = useRouter()
 

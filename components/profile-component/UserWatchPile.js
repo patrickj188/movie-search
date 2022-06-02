@@ -11,12 +11,29 @@ const ProfileTabs = ({ userMovies }) => {
     const [movie, setMovie] = useState('');
     const [results, setResults] = useState([])
     const [isLoading, setLoading] = useState()
+    const [trailerLink, setTrailerLink] = useState("#")
+
+
+    // useEffect((trailer) => {
+    //     let newFucn = () => {
+    //         if (!results.trailer.link) {
+    //             setTrailerLink('#')
+    //         } else {
+    //             setTrailerLink(results.trailer.link)
+    //         }
+    //     }
+
+    //     newFucn()
+    //     console.log(trailerLink)
+
+    // }, [trailerLink])
 
     useEffect(() => {
 
         const options = {
             method: 'GET',
-            url: `https://imdb-api.com/en/API/Title/${process.env.NEXT_PUBLIC_API_KEY}/${movie}/FullActor,FullCast,Posters,Trailer,Ratings,Wikipedia,`,
+            url: `http://www.omdbapi.com/?i=${movie}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&plot=full`,
+            // url: `https://imdb-api.com/en/API/Title/${process.env.NEXT_PUBLIC_API_KEY_IMDB}/${movie}/FullActor,FullCast,Posters,Trailer,Ratings,Wikipedia,`,
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -31,29 +48,25 @@ const ProfileTabs = ({ userMovies }) => {
                 console.error(error);
             });
         }
-
-        if (movie && !results.length) {
             search()
-        }
+
 
     }, [movie])
 
-    const movieInfo = (movie) => {
-        setMovie(movie)
-        console.log(movie)
-        console.log(results)
+    const movieInfo = (data) => {
+        setMovie(data)
+        console.log("pressed")
+        console.log(data)
 
     }
 
 
     let rendersMovies = userMovies.movies.map((movie) => {
-        return <div key={movie.id}>
+        return <div key={movie.imdbID}>
             <SaveCard
                 title={movie.title}
                 img={movie.img}
                 year={movie.year}
-                crew={movie.crew}
-                imdbRating={movie.imdbRating}
                 id={movie.id}
                 movieId={movie.movieId}
                 movieInfo={movieInfo}
@@ -76,11 +89,17 @@ const ProfileTabs = ({ userMovies }) => {
                     </Navbar>}
             >
                 <div >
-                    <MovieInfo 
-                    title={results.title}
-                    rating={results.imDbRating}
-                    image={results.image}
-                    describtion={results.plot}
+                    <MovieInfo
+                        title={results.Title}
+                        rating={results.imdbRating}
+                        image={results.Poster}
+                        describtion={results.Plot}
+                        director={results.Director}
+                        rated={results.Rated}
+                        runtime={results.Runtime}
+                        writer={results.Writer}
+                        actors={results.Actors}
+                        trailer={trailerLink}
                     />
                 </div>
             </AppShell>
