@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import { Star, Clock, AlertTriangle } from "tabler-icons-react";
 
+
 const MovieInfo = ({
   title,
   rating,
@@ -24,6 +25,8 @@ const MovieInfo = ({
   runtime,
   writer,
   actors,
+  movieId,
+  deleteSavedMovie
 }) => {
   const theme = useMantineTheme();
 
@@ -48,7 +51,7 @@ const MovieInfo = ({
 
   return (
     <div className={style.movieInfo}>
-      <div style={{ width: 800, margin: "auto", paddingTop: 100 }}>
+      <div style={{ width: 800, margin: "auto", paddingTop: 50 }}>
         <Card shadow="md" p="lg">
           <Card.Section>
             <Center>
@@ -100,61 +103,12 @@ const MovieInfo = ({
             color="blue"
             fullWidth
             style={{ marginTop: 14 }}
+            onClick={() => deleteSavedMovie(movieId)}
           >
-            Book classic tour now
+            Delete
           </Button>
         </Card>
       </div>
-
-      {/* <div className={style.rating}>
-                <Badge sx={{ paddingLeft: 0 }} size="xl" radius="xl" color="indigo" leftSection={avatar}>
-                    {rating}
-                </Badge>
-                <Badge sx={{ paddingLeft: 0 }} size="xl" radius="xl" color="indigo" leftSection={alertTriangle}>
-                    {rated}
-                </Badge>
-                <Badge sx={{ paddingLeft: 0 }} size="xl" radius="xl" color="indigo" leftSection={clock}>
-                    {runtime}
-                </Badge>
- 
-            </div>
-            <div className={style.header}>
-                <p>{title}</p>
-            </div>
-            <div className={style.container}>
-                <img className={style.img} src={image} />
-                <div className={style.textContainer}>
-                    <p className={style.text}>
-                        {describtion}
-                    </p>
-                <p className={style.text}>
-                        Director: {director} 
-                    </p>
-                    <p className={style.text}>
-                        Actors: {actors} 
-                    </p>
-                    <p className={style.text}>
-                        Writers: {writer} 
-                    </p>
-                    <p className={style.text}>
-                        Rating: {rated} 
-                    </p>
-                    <p className={style.text}>
-                        Runtime: {runtime} 
-                    </p>
-                </div>
-            </div>
-            <div style={{ width: 600, paddingTop: 100, margin: 'auto' }}>
-                <Badge style={{ margin: 5 }} component="a" href={trailer} target="_blank" variant="outline">
-                    IMDB
-                </Badge>
-                <Badge style={{ margin: 5 }} component="a" href={trailer} target="_blank" variant="outline">
-                    Trailer
-                </Badge>
-                <Badge style={{ margin: 5 }} component="a" href="https://mantine.dev" target="_blank" variant="outline">
-                    Wikipedia
-                </Badge>
-            </div> */}
     </div>
   );
 };

@@ -10,8 +10,8 @@ export default async function handler(req, res) {
         const db = client.db();
 
         const yourCollection = db.collection("SavedUserMovies");
-        const result = await yourCollection.findOneAndDelete({ _id: ObjectId(data) });
-
+        // const result = await yourCollection.findOneAndDelete({ _id: ObjectId(data) });
+        const result = await yourCollection.findOneAndDelete({ movieId: data});
         console.log(data);
         client.close();
 
