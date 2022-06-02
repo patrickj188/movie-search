@@ -1,6 +1,8 @@
 .movieInfo {
-    border: 1px solid black;
     height: 100%;
+    vertical-align: middle;
+    margin: auto;
+
 }
 
 .header {

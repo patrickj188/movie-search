@@ -8,25 +8,10 @@ import MovieInfo from "./MovieInfo";
 
 
 const ProfileTabs = ({ userMovies }) => {
-    const [movie, setMovie] = useState('');
+    const [movie, setMovie] = useState(userMovies.movies[0].movieId);
     const [results, setResults] = useState([])
     const [isLoading, setLoading] = useState()
     const [trailerLink, setTrailerLink] = useState("#")
-
-
-    // useEffect((trailer) => {
-    //     let newFucn = () => {
-    //         if (!results.trailer.link) {
-    //             setTrailerLink('#')
-    //         } else {
-    //             setTrailerLink(results.trailer.link)
-    //         }
-    //     }
-
-    //     newFucn()
-    //     console.log(trailerLink)
-
-    // }, [trailerLink])
 
     useEffect(() => {
 
@@ -55,7 +40,6 @@ const ProfileTabs = ({ userMovies }) => {
 
     const movieInfo = (data) => {
         setMovie(data)
-        console.log("pressed")
         console.log(data)
 
     }
