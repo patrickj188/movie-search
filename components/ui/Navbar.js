@@ -4,8 +4,6 @@ import style from "./Navbar.module.css"
 import LoginPage from "./loginPage"
 
 
-
-
 export default function Layout({ children }) {
     const [isOpen, setIsOpen] = useState(false)
 
@@ -33,6 +31,14 @@ export default function Layout({ children }) {
                             <Link href='/movies'>
 
                                 <a className={style.navlink}>Search</a>
+                            </Link>
+
+                        </li>
+                        <li className={style.navitem}>
+
+                            <Link href='/batman'>
+
+                                <a className={style.navlink}>Batman</a>
                             </Link>
 
                         </li>

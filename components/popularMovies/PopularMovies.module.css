@@ -1,33 +1,30 @@
-.section {
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    padding-top: 120px;
+  }
+  
+  .section {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-evenly;
     overflow-x: auto;
     margin: 50px 0;
-
-
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    overflow-x: hidden;
-    margin-top: 120px;
-
-}
-
-.posters {
+  }
+  
+  .posters {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     align-items: center;
-    width: 200vw;
-}
-
-.heading {
- color: #15133C;
- margin-top: 20px;
- margin-bottom: 0;
-}
+    width: 250vw;
+  }
+  
+  .heading {
+    padding: 0 50px;
+    font-weight: 600 !important;
+  }
+  
