@@ -10,9 +10,10 @@ import {
   Group,
   useMantineTheme,
   Center,
+  Grid,
+  Divider
 } from "@mantine/core";
 import { Star, Clock, AlertTriangle } from "tabler-icons-react";
-
 
 const MovieInfo = ({
   title,
@@ -26,7 +27,7 @@ const MovieInfo = ({
   writer,
   actors,
   movieId,
-  deleteSavedMovie
+  deleteSavedMovie,
 }) => {
   const theme = useMantineTheme();
 
@@ -54,17 +55,41 @@ const MovieInfo = ({
       <div style={{ width: 800, margin: "auto", paddingTop: 50 }}>
         <Card shadow="md" p="lg">
           <Card.Section>
-            <Center>
+            <Grid>
+              <Grid.Col span={5} style={{ paddingTop: 100}}>
+                <Center>
+              <Text size="xl" weight={800} style={{textAlign: 'center'}}>
+                {title}
+              </Text>
+              </Center>
+              <Divider style={{ paddingBottom: 5}} my="sm" />
+              <Text size="md" weight={400} style={{ padding: 5}}>
+                {`Directed: ${director}`}
+              </Text>
+              <Text size="md" weight={400} style={{ padding: 5}}>
+                {`Writers: ${writer}`}
+              </Text>
+              <Text size="md" weight={400} style={{ padding: 5}}>
+                {`Cast: ${actors}`}
+              </Text>
+              </Grid.Col>
+              <Grid.Col span={5} offset={1}>
               <Image src={image} height={"auto"} alt={title} />
-            </Center>
+              </Grid.Col>
+            </Grid>
           </Card.Section>
-            <Group
-              position="apart"
-              style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-            >
-              <Text weight={800}>{title}</Text>
-            </Group>
-            <Group style={{ display: "flex", flexDirection: 'row-reverse', marginBottom: 5}}>
+          <Group
+            position="apart"
+            style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
+          >
+          </Group>
+          <Group
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginBottom: 5,
+            }}
+          >
             <Badge
               sx={{ paddingLeft: 0 }}
               size="lg"
@@ -92,8 +117,14 @@ const MovieInfo = ({
             >
               {runtime}
             </Badge>
-            </Group>
+          </Group>
 
+          <Text
+            size="sm"
+            style={{ color: secondaryColor, lineHeight: 1.5, paddingBottom: 5 }}
+          >
+            {describtion}
+          </Text>
           <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
             {describtion}
           </Text>
@@ -101,7 +132,15 @@ const MovieInfo = ({
           <Button
             variant="light"
             color="blue"
-            fullWidth
+            size="lg"
+            style={{ marginTop: 14, marginRight: 4 }}
+          >
+            Watched
+          </Button>
+          <Button
+            variant="light"
+            color="blue"
+            size="lg"
             style={{ marginTop: 14 }}
             onClick={() => deleteSavedMovie(movieId)}
           >

@@ -5,6 +5,8 @@ import axios from "axios";
 import { Navbar, ScrollArea, AppShell } from "@mantine/core";
 import MovieInfo from "./MovieInfo";
 import { useRouter } from "next/router";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const ProfileTabs = ({ userMovies }) => {
   const [movie, setMovie] = useState(userMovies.movies[0].movieId);
@@ -89,6 +91,10 @@ const ProfileTabs = ({ userMovies }) => {
         }
       >
         <div>
+                {isLoading === true ?
+                    <Box sx={{ display: 'flex' }}>
+                        <CircularProgress style={{ color: "#EC994B" }} />
+                    </Box> :
           <MovieInfo
             title={results.Title}
             rating={results.imdbRating}
@@ -101,7 +107,7 @@ const ProfileTabs = ({ userMovies }) => {
             actors={results.Actors}
             movieId={results.imdbID}
             deleteSavedMovie={deleteSavedMovie}
-          />
+          />}
         </div>
       </AppShell>
     </div>
