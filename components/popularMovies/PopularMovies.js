@@ -3,15 +3,19 @@ import axios from 'axios'
 import MovieCard from "../cards/MovieCard";
 import styles from './PopularMovies.module.css'
 import populareMovieData from './popularedata.json'
-import popularTvData from './popularTvData.json'
+// import popularTvData from './popularTvData.json'
 import Typography from '@mui/material/Typography';
 
-
+import { buildMovieFromJson } from '../../util/builders'
 
 
 const PopularMovies = () => {
-    const [popularMovies, setPopularMovies] = useState(populareMovieData.items)
-    const [popularTv, setPopularTv] = useState(popularTvData.items)
+    const [popularMovies, setPopularMovies] = useState([])
+    // const [popularTv, setPopularTv] = useState(popularTvData.items)
+
+    useEffect(() => {
+        setPopularMovies(populareMovieData.items.map(buildMovieFromJson))
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -22,14 +26,16 @@ const PopularMovies = () => {
                 <div className={styles.posters}>
                     {popularMovies.slice(0, 10).map((movie, index) => {
                         return <MovieCard
-                            title={movie.title}
-                            img={movie.image}
-                            year={movie.year}
-                            rank={movie.rank}
-                            crew={movie.crew}
-                            imdbRating={movie.imDbRating}
+                            // title={movie.title}
+                            // img={movie.image}
+                            // year={movie.year}
+                            // rank={movie.rank}
+                            // crew={movie.crew}
+                            // imdbRating={movie.imDbRating}
+                            // movieId={movie.id}
+                            
                             key={index}
-                            movieId={movie.id}
+                            movie={movie}
                         />
                     })}
                 </div>
@@ -41,14 +47,15 @@ const PopularMovies = () => {
                 <div className={styles.posters}>
                     {popularMovies.slice(10, 20).map((movie, index) => {
                         return <MovieCard
-                            title={movie.title}
-                            img={movie.image}
-                            year={movie.year}
-                            rank={movie.rank}
-                            crew={movie.crew}
-                            imdbRating={movie.imDbRating}
+                            // title={movie.title}
+                            // img={movie.image}
+                            // year={movie.year}
+                            // rank={movie.rank}
+                            // crew={movie.crew}
+                            // imdbRating={movie.imDbRating}
+                            // movieId={movie.id}
                             key={index}
-                            movieId={movie.id}
+                            movie={movie}
                         />
                     })}
                 </div>

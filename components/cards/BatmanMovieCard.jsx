@@ -12,7 +12,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { ModalManager } from '@mui/material';
 
 
-export default function MovieCard({ movie }) {
+export default function BatmanMovieCard({ movie }) {
   const { data: session, status } = useSession()
 
   async function addMovieToPile(movieData) {

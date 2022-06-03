@@ -24,8 +24,8 @@ justify-content: flex-end;
 
 .movieCard {
   position: relative;
-  width: 400px;
-  height: 540px;
+  width: 368px;
+  height: 550px;
   background-size: cover;
   /* background-repeat: no-repeat; */
 

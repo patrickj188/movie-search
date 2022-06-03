@@ -1,0 +1,32 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+  padding-top: 120px;
+  color: white;
+  background-color: #221f40;
+}
+
+.section {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow-x: auto;
+  margin: 50px 0;
+}
+
+.posters {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250vw;
+}
+
+.heading {
+  padding: 0 50px;
+  font-weight: 600 !important;
+}
