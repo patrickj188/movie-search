@@ -125,9 +125,6 @@ const MovieInfo = ({
           >
             {describtion}
           </Text>
-          <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
-            {describtion}
-          </Text>
 
           <Button
             variant="light"
