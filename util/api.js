@@ -1,4 +1,4 @@
-import { buildMovieSearchResponse } from './omdbParser';
+import { buildMovieOmdbSearchResponse } from './builders';
 
 
 // simple object to interact with and abstract api functions from component code
@@ -25,7 +25,7 @@ const api = {
       return [];
     }
 
-    return data.Search.map((x) => buildMovieSearchResponse(x))
+    return data.Search.map((x) => buildMovieOmdbSearchResponse(x))
   },
 }
 
