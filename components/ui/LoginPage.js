@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 
-const LoginPage = () => {
+export default function LoginPage () {
     const { data: session, status } = useSession();
     const [anchorEl, setAnchorEl] =useState(null);
     const open = Boolean(anchorEl);
@@ -63,5 +63,3 @@ const LoginPage = () => {
         </>
     )
 }
-
-export default LoginPage

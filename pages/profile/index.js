@@ -1,4 +1,3 @@
-import { useSession } from "next-auth/react"
 import { MongoClient } from "mongodb";
 import { useState } from "react";
 import React from "react";
