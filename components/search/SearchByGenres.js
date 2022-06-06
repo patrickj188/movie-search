@@ -1,131 +1,131 @@
-import React, { useState, useEffect } from 'react'
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
-import axios from 'axios'
-import MovieCard from "../cards/MovieCard"
-import style from './SearchMovies.module.css'
+// import React, { useState, useEffect } from 'react'
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import ListItemText from '@mui/material/ListItemText';
+// import Select from '@mui/material/Select';
+// import Checkbox from '@mui/material/Checkbox';
+// import axios from 'axios'
+// import MovieCard from "../cards/MovieCard"
+// import style from './SearchMovies.module.css'
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
+// const ITEM_HEIGHT = 48;
+// const ITEM_PADDING_TOP = 8;
+// const MenuProps = {
+//     PaperProps: {
+//         style: {
+//             maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//             width: 250,
+//         },
+//     },
+// };
 
-const genres = [
-    'Action',
-    'Adventure',
-    'Animation',
-    'Biography',
-    'Comedy',
-    'Crime',
-    'Documentary',
-    'Drama',
-    'Family',
-    'Fantasy',
-    'Film_Noir',
-    'History',
-    'Horror',
-    'Music',
-    'Musical',
-    'Mystery',
-    'News',
-    'Romance',
-    'Sci_Fi',
-    'Sport',
-    'Thriller',
-    'War',
-    'Western',
-];
+// const genres = [
+//     'Action',
+//     'Adventure',
+//     'Animation',
+//     'Biography',
+//     'Comedy',
+//     'Crime',
+//     'Documentary',
+//     'Drama',
+//     'Family',
+//     'Fantasy',
+//     'Film_Noir',
+//     'History',
+//     'Horror',
+//     'Music',
+//     'Musical',
+//     'Mystery',
+//     'News',
+//     'Romance',
+//     'Sci_Fi',
+//     'Sport',
+//     'Thriller',
+//     'War',
+//     'Western',
+// ];
 
-export default function SearchByGenres() {
-    const [movieGenre, setmovieGenre] = useState([]);
-    const [results, setResults] = useState([]);
+// export default function SearchByGenres() {
+//     const [movieGenre, setmovieGenre] = useState([]);
+//     const [results, setResults] = useState([]);
 
-    const handleChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setmovieGenre(
-            typeof value === 'string' ? value.split(',') : value,
-        );
-    };
+//     const handleChange = (event) => {
+//         const {
+//             target: { value },
+//         } = event;
+//         setmovieGenre(
+//             typeof value === 'string' ? value.split(',') : value,
+//         );
+//     };
 
-    useEffect(() => {
+//     useEffect(() => {
 
-        const options = {
-            method: 'GET',
-            url: `https://imdb-api.com/API/AdvancedSearch/k_hwo94fqa?genres=${movieGenre}`,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
+//         const options = {
+//             method: 'GET',
+//             url: `https://imdb-api.com/API/AdvancedSearch/k_hwo94fqa?genres=${movieGenre}`,
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         };
 
-        const search = async () => {
-            await axios.request(options).then((response) => {
-                console.log(response.data);
-                setResults(response.data)
-            }).catch(function (error) {
-                console.error(error);
-            });
-        }
-
-
-        if (movieGenre && !results.length) {
-            search()
-        }
-
-    }, [movieGenre])
+//         const search = async () => {
+//             await axios.request(options).then((response) => {
+//                 console.log(response.data);
+//                 setResults(response.data)
+//             }).catch(function (error) {
+//                 console.error(error);
+//             });
+//         }
 
 
-    let movieGenreResults = results.results?.map(function (i) {
-        return (<div key={i.id} >
-            <MovieCard
-                title={i.title}
-                img={i.image}
-                year={i.description}
-            />
-        </div>)
+//         if (movieGenre && !results.length) {
+//             search()
+//         }
 
-    })
+//     }, [movieGenre])
 
-    return (
-        <div>
+
+//     let movieGenreResults = results.results?.map(function (i) {
+//         return (<div key={i.id} >
+//             <MovieCard
+//                 title={i.title}
+//                 img={i.image}
+//                 year={i.description}
+//             />
+//         </div>)
+
+//     })
+
+//     return (
+//         <div>
             
-            <FormControl sx={{ width: 200 }}>
-                <InputLabel id="demo-multiple-checkbox-label">Genre</InputLabel>
-                <Select
-                    labelId="demo-multiple-checkbox-label"
-                    id="demo-multiple-checkbox"
-                    multiple
-                    label='Genre'
-                    size='small'
-                    value={movieGenre}
-                    onChange={handleChange}
-                    input={<OutlinedInput label="Tag" />}
-                    renderValue={(selected) => selected.join(', ')}
-                    MenuProps={MenuProps}
-                >
-                    {genres.map((genre) => (
-                        <MenuItem key={genre} value={genre}>
-                            <Checkbox checked={movieGenre.indexOf(genre) > -1} />
-                            <ListItemText primary={genre} />
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-            <div className={style.cardGrid}>
-                {movieGenreResults}
-            </div>
-        </div>
-    );
-}
+//             <FormControl sx={{ width: 200 }}>
+//                 <InputLabel id="demo-multiple-checkbox-label">Genre</InputLabel>
+//                 <Select
+//                     labelId="demo-multiple-checkbox-label"
+//                     id="demo-multiple-checkbox"
+//                     multiple
+//                     label='Genre'
+//                     size='small'
+//                     value={movieGenre}
+//                     onChange={handleChange}
+//                     input={<OutlinedInput label="Tag" />}
+//                     renderValue={(selected) => selected.join(', ')}
+//                     MenuProps={MenuProps}
+//                 >
+//                     {genres.map((genre) => (
+//                         <MenuItem key={genre} value={genre}>
+//                             <Checkbox checked={movieGenre.indexOf(genre) > -1} />
+//                             <ListItemText primary={genre} />
+//                         </MenuItem>
+//                     ))}
+//                 </Select>
+//             </FormControl>
+//             <div className={style.cardGrid}>
+//                 {movieGenreResults}
+//             </div>
+//         </div>
+//     );
+// }

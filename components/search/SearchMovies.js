@@ -9,7 +9,6 @@ import { IconButton } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
 import TheatersIcon from '@mui/icons-material/Theaters';
-import SearchByGenres from './SearchByGenres';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -28,7 +27,6 @@ const SearchMovies = () => {
         const options = {
             method: 'GET',
             url: `http://www.omdbapi.com/?s=${movie}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`,
-            // url: `https://imdb-api.com/API/AdvancedSearch/${process.env.NEXT_PUBLIC_API_KEY}?${movie}`,
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -127,9 +125,6 @@ const SearchMovies = () => {
                 >
                     Search
                 </Button>
-                <div>
-                    {/* <SearchByGenres setmovieGenre={setmovieGenre} /> */}
-                </div>
 
             </div>
             <div className={style.cardGrid}>
