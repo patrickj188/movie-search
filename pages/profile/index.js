@@ -61,7 +61,7 @@ function Profile (props){
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     const client = await MongoClient.connect(process.env.MONGODB_URI)
     const db = client.db();
