@@ -26,7 +26,7 @@ const SearchMovies = () => {
 
         const options = {
             method: 'GET',
-            url: `http://www.omdbapi.com/?s=${movie}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`,
+            url: `https://www.omdbapi.com/?s=${movie}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`,
             headers: {
                 'Content-Type': 'application/json'
             }
