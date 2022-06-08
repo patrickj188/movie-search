@@ -4,7 +4,6 @@ import MovieCard from "../cards/MovieCard"
 import style from './SearchMovies.module.css'
 import { InputAdornment } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel';
 import Button from '@mui/material/Button';
