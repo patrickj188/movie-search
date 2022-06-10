@@ -42,7 +42,6 @@ function Profile (props){
                 }}
                 style={{
                     marginTop: "110px",
-                    // backgroundColor: "#F1EEE9",
                 }}
                 TabIndicatorProps={{
                     style: {
@@ -82,8 +81,7 @@ export async function getServerSideProps() {
           movieId: movie.movieId
   
         }))
-      },
-      revalidate: 1
+      }
     };
   }
 
