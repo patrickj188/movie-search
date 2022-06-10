@@ -32,7 +32,7 @@ const ProfileTabs = ({ userMovies }) => {
   useEffect(() => {
     const options = {
       method: "GET",
-      url: `http://www.omdbapi.com/?i=${movie}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&plot=full`,
+      url: `https://www.omdbapi.com/?i=${movie}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&plot=full`,
       headers: {
         "Content-Type": "application/json",
       },
