@@ -16,7 +16,7 @@ export default NextAuth({
   jwt: {
     encryption: true,
   },
-  secret: process.env.SECRET,
+  secret: "secert token",
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       console.log(user, account, profile, email, credentials)
