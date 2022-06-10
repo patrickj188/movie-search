@@ -11,9 +11,7 @@ export default async function handler(req, res) {
         const result = await moviesCollection.insertOne(data)
 
         console.log(result)
-
         client.close();
-
         res.status(201).json({message: 'User Created'})
 
     }
