@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# The Watch Pile
 
-## Getting Started
+![Alt Text](https://github.com/Kclaster/todo/blob/master/client/src/pictures/logo-01.png)
 
-First, run the development server:
+The Watch Pile allows a user to search movies/TV shows and save them to their profile.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+![Alt Text](https://github.com/Kclaster/todo/blob/master/client/src/pictures/logo-01.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+From the user profile you can delete and view the details of the film. In the next stage of the app, the user will be able to move their watched movies into the completed pile. From there the user can then rate and leave a review.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+![Alt Text](https://github.com/Kclaster/todo/blob/master/client/src/pictures/logo-01.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Languages Used:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Next.Js
+- Next-Auth
+- Axios
+- MongoDB
+- Mantine
+- Material UI
+- CSS Modules
 
-## Learn More
+## NNext Stages
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Add user reviews and comments
+- Allow user to add profile pictures and bios
+- Add a favorite movie section
+- Update Trending movie section
+- Allow users to send movie recommendations to one another
