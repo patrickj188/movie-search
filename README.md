@@ -1,14 +1,14 @@
 # The Watch Pile
 
-![Alt Text](https://github.com/Kclaster/todo/blob/master/client/src/pictures/logo-01.png)
+![Alt Text](https://github.com/patrickj188/movie-search/blob/main/public/MovieSearch%20Front%20Page.png)
 
 The Watch Pile allows a user to search movies/TV shows and save them to their profile.
 
-![Alt Text](https://github.com/Kclaster/todo/blob/master/client/src/pictures/logo-01.png)
+![Alt Text](https://github.com/patrickj188/movie-search/blob/main/public/Movie%20Search%20Page.png)
 
 From the user profile you can delete and view the details of the film. In the next stage of the app, the user will be able to move their watched movies into the completed pile. From there the user can then rate and leave a review.
 
-![Alt Text](https://github.com/Kclaster/todo/blob/master/client/src/pictures/logo-01.png)
+![Alt Text](https://github.com/patrickj188/movie-search/blob/main/public/Profile%20Page.png)
 
 ## Languages Used:
 
