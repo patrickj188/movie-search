@@ -20,7 +20,7 @@ From the user profile you can delete and view the details of the film. In the ne
 - Material UI
 - CSS Modules
 
-## NNext Stages
+## Next Stages
 
 - Add user reviews and comments
 - Allow user to add profile pictures and bios
