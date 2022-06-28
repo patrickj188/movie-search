@@ -1,7 +1,6 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import PopularMovies from '../components/popularMovies/PopularMovies'
-
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import PopularMovies from "../components/popularMovies/PopularMovies";
 
 export default function Home() {
   return (
@@ -11,12 +10,9 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className={styles.main}>
-          <PopularMovies />
+        <PopularMovies />
       </main>
     </div>
-      
-
-  )
+  );
 }

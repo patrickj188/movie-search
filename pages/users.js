@@ -6,6 +6,5 @@ function User() {
     return <p>You are not logged in.</p>;
   }
   return <h1>you are logged in</h1>;
-
 }
 export default User;

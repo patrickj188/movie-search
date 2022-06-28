@@ -1,7 +1,6 @@
 import { getSession } from "next-auth/react";
 import React from "react";
 
-
 function protectedpage() {
   return (
     <div>
