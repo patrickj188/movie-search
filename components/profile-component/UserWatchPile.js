@@ -5,15 +5,17 @@ import axios from "axios";
 import { Navbar, ScrollArea, AppShell } from "@mantine/core";
 import MovieInfo from "./MovieInfo";
 import { useRouter } from "next/router";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import { useSession } from "next-auth/react";
 
-const ProfileTabs = ({ userMovies }) => {
-  const [movie, setMovie] = useState(userMovies.movies[0].movieId);
+const ProfileTabs = () => {
+  const [movie, setMovie] = useState();
   const [results, setResults] = useState([]);
-  const [isLoading, setLoading] = useState();
-  const [trailerLink, setTrailerLink] = useState("#");
+  const [userMovies, setUserMovies] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const router = useRouter();
+  const { data: session, status } = useSession();
 
   async function deleteSavedMovie(movieId) {
     const response = await fetch(`/api/deleteMovie`, {
@@ -28,6 +30,31 @@ const ProfileTabs = ({ userMovies }) => {
 
     router.push("/profile");
   }
+
+  useEffect(() => {
+    if (!session) return;
+    const options = {
+      method: "GET",
+      url: `/api/userMovies?user_id=${session.id}`,
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const search = async () => {
+      await axios
+        .request(options)
+        .then((response) => {
+          setUserMovies(response.data);
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    };
+    search();
+  }, [session]);
 
   useEffect(() => {
     const options = {
@@ -53,15 +80,20 @@ const ProfileTabs = ({ userMovies }) => {
     search();
   }, [movie]);
 
+  useEffect(() => {
+    if (userMovies.length > 0) {
+      setMovie(userMovies[0]?.movieId);
+    }
+  }, [userMovies]);
+
   const movieInfo = (data) => {
     setMovie(data);
     console.log(data);
   };
 
-
-  let rendersMovies = userMovies.movies.map((movie) => {
+  let rendersMovies = userMovies.map((movie, index) => {
     return (
-      <div key={movie.imdbID}>
+      <div key={index}>
         <SaveCard
           title={movie.title}
           img={movie.img}
@@ -91,10 +123,6 @@ const ProfileTabs = ({ userMovies }) => {
         }
       >
         <div>
-                {isLoading === true ?
-                    <Box sx={{ display: 'flex' }}>
-                        <CircularProgress style={{ color: "#EC994B" }} />
-                    </Box> :
           <MovieInfo
             title={results.Title}
             rating={results.imdbRating}
@@ -107,7 +135,8 @@ const ProfileTabs = ({ userMovies }) => {
             actors={results.Actors}
             movieId={results.imdbID}
             deleteSavedMovie={deleteSavedMovie}
-          />}
+            loading={isLoading}
+          />
         </div>
       </AppShell>
     </div>

@@ -7,9 +7,8 @@
 } */
 
 .container {
-    min-height: auto;
-    background-color: #F1EEE9;
-    margin: 5px;
-    position: relative;
+  min-height: auto;
+  background-color: #f1eee9;
+  margin: 5px;
+  position: relative;
 }
-
